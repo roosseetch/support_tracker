@@ -3,9 +3,7 @@ class CreateTickets < ActiveRecord::Migration
     create_table :tickets do |t|
       t.string :customer_name
       t.string :customer_email
-
       t.string :uniq_reference
-
       t.string :ticket_status
       t.string :ticket_interface
       t.text :ticket_body
@@ -13,6 +11,5 @@ class CreateTickets < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :tickets, :slug, unique: true
   end
 end

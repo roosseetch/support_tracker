@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    # @tickets = Ticket.all
   end
 
   # GET /tickets/1
@@ -14,7 +14,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new({})
   end
 
   # GET /tickets/1/edit
@@ -64,7 +64,7 @@ class TicketsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @ticket = Ticket.find(params[:id])
+      @ticket = Ticket.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

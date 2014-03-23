@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong Customer name:
+  = @ticket.customer_name
+%p
+  %strong Customer email:
+  = @ticket.customer_email
+%p
+  %strong Uniq reference:
+  = @ticket.uniq_reference
+%p
+  %strong Ticket status:
+  = @ticket.ticket_status
+%p
+  %strong Ticket interface:
+  = @ticket.ticket_interface
+%p
+  %strong Ticket body:
+  = @ticket.ticket_body
+%p
+  %strong Ownership:
+  = @ticket.ownership
+= link_to 'Edit', edit_ticket_path(@ticket)
+|
+\#{link_to 'Back', tickets_path}

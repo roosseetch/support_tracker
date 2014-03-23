@@ -1,0 +1,3 @@
+Hello, #{@ticket.customer_name}
+%p
+  You have made new ticket. View the ticket’s history and update tickets you can here: #{url_for(controller: 'tickets', action: 'edit', only_path: false)}

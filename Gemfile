@@ -41,6 +41,11 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'friendly_id'
 gem 'randexp'
+
+# NoMethodError in Tickets#index undefined method `environment' for nil:NilClass
+# (in /home/code/support_tracker/app/assets/stylesheets/framework_and_overrides.css.scss)
+gem 'sprockets', '2.11.0'
+
 group :development do
   gem 'rails_layout'
 end
