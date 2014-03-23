@@ -29,6 +29,8 @@ class TicketsController < ApplicationController
     @ticket.ticket_interface = 'New unassigned tickets'
     @ticket.make_uniq_reference
 
+    TicketConfirmingMailer.new_ticket_confirmation(@ticket).deliver
+
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
@@ -38,6 +40,9 @@ class TicketsController < ApplicationController
         format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def process_ticket
   end
 
   # PATCH/PUT /tickets/1

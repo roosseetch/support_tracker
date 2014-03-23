@@ -1,5 +1,13 @@
-%h1 Editing ticket
-= render 'form'
-= link_to 'Show', @ticket
-|
-\#{link_to 'Back', tickets_path}
+.well.well-small
+  .page-header
+    .col-lg-1
+    %h1
+      Support Issue Tracker
+      %small Edit Ticket Page
+.container
+  .col-lg-1
+  .col-lg-11
+  = render 'form_edit'
+  = link_to 'Show', @ticket
+  |
+  \#{link_to 'Back', tickets_path}
