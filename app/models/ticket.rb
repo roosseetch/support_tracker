@@ -22,10 +22,9 @@ class Ticket < ActiveRecord::Base
      'Closed Tickets']
   end
 
-  private
-    def make_uniq_reference
-      begin
-        self.uniq_reference = VALID_UNIQ_REFERENCE.gen.upcase
-      end while Ticket.where(uniq_reference: self.uniq_reference).exists?
-    end
+  def make_uniq_reference
+    begin
+      self.uniq_reference = VALID_UNIQ_REFERENCE.gen.upcase
+    end while Ticket.where(uniq_reference: self.uniq_reference).exists?
+  end
 end

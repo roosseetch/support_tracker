@@ -6,6 +6,9 @@
   %strong Customer email:
   = @ticket.customer_email
 %p
+  %strong Subject:
+  = @ticket.subject
+%p
   %strong Uniq reference:
   = @ticket.uniq_reference
 %p
@@ -15,11 +18,14 @@
   %strong Ticket interface:
   = @ticket.ticket_interface
 %p
+  %strong Ownership:
+  = @ticket.ownership
+%p
   %strong Ticket body:
   = @ticket.ticket_body
 %p
-  %strong Ownership:
-  = @ticket.ownership
+  %strong Response:
+  = @ticket.response
 = link_to 'Edit', edit_ticket_path(@ticket)
 |
 \#{link_to 'Back', tickets_path}

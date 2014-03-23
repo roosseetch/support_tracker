@@ -1,5 +1,7 @@
 SupportTracker::Application.routes.draw do
-  resources :tickets
+  resources :tickets do
+    collection { post :process_ticket }
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

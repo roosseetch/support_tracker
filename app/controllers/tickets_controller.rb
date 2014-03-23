@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    # @tickets = Ticket.all
+    @tickets = Ticket.all
   end
 
   # GET /tickets/1
@@ -14,7 +14,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets/new
   def new
-    @ticket = Ticket.new({})
+    @ticket = Ticket.new
   end
 
   # GET /tickets/1/edit
@@ -25,6 +25,9 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.ticket_status = 'Waiting for Staff Response'
+    @ticket.ticket_interface = 'New unassigned tickets'
+    @ticket.make_uniq_reference
 
     respond_to do |format|
       if @ticket.save
@@ -69,6 +72,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:customer_name, :customer_email, :uniq_reference, :ticket_status, :ticket_interface, :ticket_body, :ownership)
+      params.require(:ticket).permit(:customer_name, :customer_email, :subject, :uniq_reference, :ticket_status, :ticket_interface, :ownership, :ticket_body, :response)
     end
 end
