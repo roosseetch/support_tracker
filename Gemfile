@@ -39,6 +39,8 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'friendly_id'
+gem 'randexp'
 group :development do
   gem 'rails_layout'
 end
