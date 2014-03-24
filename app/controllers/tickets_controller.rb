@@ -48,6 +48,8 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
+    @ticket.ticket_status = 'On Hold'
+    @ticket.ticket_interface = 'On hold tickets'
     respond_to do |format|
       if @ticket.update(ticket_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
