@@ -7,4 +7,24 @@
 .container
   .col-lg-2
   .col-lg-10
-    = link_to 'Back', tickets_path
+  / Body content
+  %table.table.table-hover
+    %thead
+      %tr
+        %th
+        %th Name
+        %th Email
+        %th Subject
+        %th Status
+        %th Interface
+    %tbody
+      - @tickets.each_with_index do |ticket, i|
+        %tr{class: cycle('active', 'success', 'info')}
+          %td= i+1
+          %td= link_to ticket.customer_name, ticket_path(ticket)
+          %td= ticket.customer_email
+          %td= %Q{#{truncate("#{ticket.subject}", length: 20)}}
+          %td= ticket.ticket_status
+          %td= ticket.ticket_interface
+
+  = link_to 'Back', tickets_path
