@@ -2,13 +2,14 @@
 -# in app/views/movies/show.html.haml
 %li= link_to 'Home', root_path
 %li= link_to 'New Ticket', new_ticket_path
-%li= link_to 'Process Ticket', process_tickets_path
+%li= link_to 'Process Ticket', track_tickets_path
 
 %p.navbar-text.pull-right.navbar-right
   - if user_signed_in?
     Logged in as
     = succeed "." do
-      %strong= current_user.email
+      -# %strong= current_user.email
+      %strong= current_user.username
     = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
     |
     \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}

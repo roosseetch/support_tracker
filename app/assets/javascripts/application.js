@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).on('page:load', function () {
+        $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+        // root 'ip_addresses#index'
+        if (this.location.pathname == '/ip_addresses') {
+          $('a[href="/"]').parent().addClass('active');
+        }
+});
+
+$(document).on('page:load', function () {
+        $('.page.current').parent().addClass('active');
+});

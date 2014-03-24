@@ -1,6 +1,6 @@
 SupportTracker::Application.routes.draw do
   resources :tickets do
-    collection { post :process }
+    collection { get :track }
   end
 
   devise_for :users

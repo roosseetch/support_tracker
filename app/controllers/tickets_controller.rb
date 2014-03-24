@@ -42,7 +42,13 @@ class TicketsController < ApplicationController
     end
   end
 
-  def process_ticket
+  def track
+    # debugger
+    if user_signed_in?
+      @tickets = Ticket.all
+    else
+      redirect_to new_user_session_path, alert: 'Please Sign in.'
+    end
   end
 
   # PATCH/PUT /tickets/1
