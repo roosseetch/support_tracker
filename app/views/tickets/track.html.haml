@@ -19,9 +19,9 @@
         %th Interface
     %tbody
       - @tickets.each_with_index do |ticket, i|
-        %tr{class: cycle('active', 'success', 'info')}
+        %tr{class: cycle('active', 'success', 'info'), onclick: "document.location = '#{ticket_path(ticket)}'"}
           %td= i+1
-          %td= link_to ticket.customer_name, ticket_path(ticket)
+          %td= ticket.customer_name
           %td= ticket.customer_email
           %td= %Q{#{truncate("#{ticket.subject}", length: 20)}}
           %td= ticket.ticket_status
