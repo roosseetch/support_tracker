@@ -3,11 +3,11 @@
     .col-lg-1
     %h1
       Support Issue Tracker
-      %small Cusromer Edit Ticket Page
+      %small Edit Ticket Page
 .container
   .col-lg-1
   .col-lg-11
-  = render 'form_edit'
+  = render 'form_staff'
   = link_to 'Show', @ticket
   |
   \#{link_to 'Back', tickets_path}

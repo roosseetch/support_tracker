@@ -51,6 +51,14 @@ class TicketsController < ApplicationController
     end
   end
 
+   def edit_staff
+    if user_signed_in?
+      @ticket = Ticket.friendly.find(params[:id])
+    else
+      redirect_to new_user_session_path, alert: 'Please Sign in.'
+    end
+  end
+
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
