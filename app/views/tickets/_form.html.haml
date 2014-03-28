@@ -26,7 +26,8 @@
       %br/
       = f.label :ticket_status
       -#= f.text_field :ticket_status, cols: '30'
-      = select_tag(:ticket_status, options_for_select([['Waiting for Customer'], ['On Hold'], ['Cancelled'], ['Completed']]), class: 'form-control')
+      -#= select_tag(:ticket_status, options_for_select([['Waiting for Customer'], ['On Hold'], ['Cancelled'], ['Completed']]), class: 'form-control')
+      = f.select(:ticket_status, options_for_select([['Waiting for Customer'], ['On Hold'], ['Cancelled'], ['Completed']]), class: 'form-control')
       %br/
       = f.label :ticket_interface
       = f.text_field :ticket_interface, cols: '30', disabled:'disabled', class: 'form-control'
@@ -42,5 +43,4 @@
       = f.label :response
       = f.text_area :response, class: 'form-control'
     %br/
-    .btn.btn-default
-      = f.submit
+    = f.submit 'Update Ticket', class: 'btn btn-default'

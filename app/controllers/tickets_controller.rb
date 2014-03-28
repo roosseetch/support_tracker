@@ -20,10 +20,15 @@ class TicketsController < ApplicationController
 
   # GET /tickets/1/edit
   def edit
-    if user_signed_in?
-      @whois = :staff
+    if @ticket.ticket_status.in? ['Cancelled', 'Completed']
+      redirect_to ticket_path(@ticket), alert: "This ticket is
+      #{@ticket.ticket_status}."
     else
-      @whois = :customer
+      if user_signed_in?
+        @whois = :staff
+      else
+        @whois = :customer
+      end
     end
   end
   # POST /tickets
@@ -58,8 +63,8 @@ class TicketsController < ApplicationController
 
   def update
     if user_signed_in?
-      @ticket.ticket_status = 'Waiting for Customer'
-      @ticket.ticket_interface = 'Open Tickets'
+      @ticket.ticket_status = params[:ticket][:ticket_status] || 'Waiting for Customer'
+      @ticket.ticket_interface = (@ticket.ticket_status.in? ['Cancelled', 'Completed']) ? 'Closed Tickets' : 'Open Tickets'
       # debugger
       @ticket.ownership = params[:ticket][:ownership] || current_user.username
       TicketConfirmingMailer.new_ticket_confirmation(@ticket).deliver
