@@ -1,8 +1,6 @@
 SupportTracker::Application.routes.draw do
   resources :tickets do
     collection { get :track }
-    collection { post :process }
-    member { get :edit_staff }
   end
 
   devise_for :users

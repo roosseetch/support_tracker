@@ -15,12 +15,17 @@ class TicketsController < ApplicationController
   # GET /tickets/new
   def new
     @ticket = Ticket.new
+    @whois = :customer
   end
 
   # GET /tickets/1/edit
   def edit
+    if user_signed_in?
+      @whois = :staff
+    else
+      @whois = :customer
+    end
   end
-
   # POST /tickets
   # POST /tickets.json
   def create
@@ -51,19 +56,17 @@ class TicketsController < ApplicationController
     end
   end
 
-   def edit_staff
-    if user_signed_in?
-      @ticket = Ticket.friendly.find(params[:id])
-    else
-      redirect_to new_user_session_path, alert: 'Please Sign in.'
-    end
-  end
-
-  # PATCH/PUT /tickets/1
-  # PATCH/PUT /tickets/1.json
   def update
-    @ticket.ticket_status = 'On Hold'
-    @ticket.ticket_interface = 'On hold tickets'
+    if user_signed_in?
+      @ticket.ticket_status = 'Waiting for Customer'
+      @ticket.ticket_interface = 'Open Tickets'
+      # debugger
+      @ticket.ownership = params[:ticket][:ownership] || current_user.username
+      TicketConfirmingMailer.new_ticket_confirmation(@ticket).deliver
+    else
+      @ticket.ticket_status = 'On Hold'
+      @ticket.ticket_interface = 'On hold tickets'
+    end
     respond_to do |format|
       if @ticket.update(ticket_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }

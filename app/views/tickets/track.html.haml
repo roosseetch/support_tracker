@@ -19,7 +19,7 @@
         %th Interface
     %tbody
       - @tickets.each_with_index do |ticket, i|
-        %tr{class: cycle('active', 'success', 'info'), onclick: "document.location = '#{edit_staff_ticket_path(ticket)}'"}
+        %tr{class: cycle('active', 'success', 'info'), onclick: "document.location = '#{edit_ticket_path(ticket)}'"}
           %td= i+1
           %td= ticket.customer_name
           %td= ticket.customer_email
