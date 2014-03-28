@@ -55,7 +55,8 @@ class TicketsController < ApplicationController
   def track
     # debugger
     if user_signed_in?
-      @tickets = Ticket.all
+      # @tickets = Ticket.all.page(params[:page])
+      @tickets = Ticket.order(:id).page(params[:page]).per(5)
     else
       redirect_to new_user_session_path, alert: 'Please Sign in.'
     end

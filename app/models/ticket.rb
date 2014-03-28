@@ -10,6 +10,8 @@ class Ticket < ActiveRecord::Base
   validates :ticket_body,  presence: true, length: { maximum: 1000 }
   validates :customer_email, presence: true, format: { with: VALID_EMAIL_REGEX }
 
+  max_paginates_per 10
+
   # after_initialize :make_uniq_reference
 
   def self.all_statuses

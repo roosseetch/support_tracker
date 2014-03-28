@@ -41,6 +41,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'friendly_id'
 gem 'randexp'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # NoMethodError in Tickets#index undefined method `environment' for nil:NilClass
 # (in /home/code/support_tracker/app/assets/stylesheets/framework_and_overrides.css.scss)

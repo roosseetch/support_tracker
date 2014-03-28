@@ -9,6 +9,7 @@
   .col-lg-10
   / Body content
   %table.table.table-hover
+    /- debugger
     %thead
       %tr
         %th
@@ -26,5 +27,13 @@
           %td= %Q{#{truncate("#{ticket.subject}", length: 20)}}
           %td= ticket.ticket_status
           %td= ticket.ticket_interface
+    %tfoot.text-right
+    %tr
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td= paginate @tickets, theme: 'twitter-bootstrap-3'
 
   = link_to 'Back', tickets_path
