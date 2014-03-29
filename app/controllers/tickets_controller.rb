@@ -4,7 +4,15 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
+    if params[:search]
+      # debugger
+      if Ticket.exists?(slug: params[:search].downcase)
+        @ticket = Ticket.find_by slug: params[:search].downcase
+        redirect_to ticket_path(@ticket)
+      end
+    end
     @tickets = Ticket.all
+
   end
 
   # GET /tickets/1

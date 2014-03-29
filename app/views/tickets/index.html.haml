@@ -5,6 +5,12 @@
       Support Issue Tracker
       %small Welcome Page
 .container
-  .col-lg-12
+  .col-lg-4
+    = form_tag tickets_path, method: 'get', class: 'form-inline', :role => 'form', multipart: true do
+      .form-group
+        = text_field_tag :search, nil, {class: 'form-control', :style => 'width: 15em;', placeholder: "ABC-123-ABC-123-ABC", type: "text"}
+      = button_tag(type: 'submit', class: 'btn btn-default') do
+        %span.glyphicon.glyphicon-search
+  .col-lg-8
     / Body content
     Welcome to the home page of the Support Office, which is situated within  Services Centre.
