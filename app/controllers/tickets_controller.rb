@@ -4,12 +4,10 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    if params[:search]
       # debugger
-      if Ticket.exists?(slug: params[:search].downcase)
-        @ticket = Ticket.find_by slug: params[:search].downcase
-        redirect_to ticket_path(@ticket)
-      end
+    if ! params[:search].blank?
+      @ticket = Ticket.find_by slug: params[:search].downcase
+      redirect_to ticket_path(@ticket) unless @ticket.nil?
     end
     @tickets = Ticket.all
 

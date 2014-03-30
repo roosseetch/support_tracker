@@ -10,3 +10,22 @@
       -# = link_to 'Home', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav= render 'layouts/navigation_links'
+      %form.navbar-form.navbar-left{role: "search"}
+        .form-group
+          %input.form-control{placeholder: "Search", type: "text"}/
+        %button.btn.btn-default{type: "submit"} Submit
+      / %ul.nav.navbar-nav.navbar-right
+      /   %li
+      /     %a{href: "#"} Link
+      /   - if user_signed_in?
+      /     Logged in as
+      /     = succeed "." do
+      /       %strong= current_user.username
+      /     = link_to 'Edit profile', edit_user_registration_path
+      /     |
+      /     \#{link_to "Logout", destroy_user_session_path, method: :delete}
+      /   - else
+      /     = link_to "Sign up", new_user_registration_path
+      /     |
+      /     \#{link_to "Login", new_user_session_path}
+
